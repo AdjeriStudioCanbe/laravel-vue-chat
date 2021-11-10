@@ -2233,6 +2233,12 @@ var app = new Vue({
         //Save the response in the messages array to display on the chat view
         _this.messages = response.data;
       });
+      window.Echo["private"]("chat").listen("MessageSent", function (e) {
+        _this.messages.push({
+          message: e.message.message,
+          user: e.user
+        });
+      });
     },
     //Receives the message that was emitted from the ChatForm Vue component
     addMessage: function addMessage(message) {

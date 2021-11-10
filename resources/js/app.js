@@ -54,6 +54,13 @@ const app = new Vue({
                 //Save the response in the messages array to display on the chat view
                 this.messages = response.data;
             });
+
+            window.Echo.private("chat").listen("MessageSent", (e) => {
+                this.messages.push({
+                    message: e.message.message,
+                    user: e.user,
+                });
+            });
         },
         //Receives the message that was emitted from the ChatForm Vue component
         addMessage(message) {
