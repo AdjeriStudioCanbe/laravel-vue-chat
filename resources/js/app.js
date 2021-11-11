@@ -30,6 +30,7 @@ Vue.component(
     require("./components/ChatMessages.vue").default
 );
 Vue.component("chat-form", require("./components/ChatForm.vue").default);
+Vue.component("video-chat", require("./components/VideoChat.vue").default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
